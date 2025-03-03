@@ -20,7 +20,13 @@ connectDB()
 await connectCloudinary()
 
 // Middlewares
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://job-portal-full-stack-client-beta.vercel.app", // Allow only your frontend
+    credentials: true, // Allow credentials (cookies, authorization headers)
+  })
+);
+
 app.use(express.json())
 app.use(clerkMiddleware())
 
